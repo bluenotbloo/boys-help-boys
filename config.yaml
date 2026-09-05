@@ -1,0 +1,9 @@
+logger:
+  level: "info"                      # 日志级别
+  encoding: "json"                   # 日志编码格式
+  filename: "log/boys-help-boys.log" # 日志文件路径
+  max-size: 100                      # 单个文件最大 MB
+  max-backups: 3                     # 保留旧文件个数
+  max-age: 7                         # 保留旧文件天数
+  compress: true                     # 是否压缩旧文件
+  console: true                      # 是否在控制台输出日志 
