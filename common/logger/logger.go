@@ -1,10 +1,11 @@
 package logger
 
 import (
-	"go.uber.org/zap"
-	"go.uber.org/zap/zapcore"
 	"os"
 	"sync"
+
+	"go.uber.org/zap"
+	"go.uber.org/zap/zapcore"
 )
 
 var (
@@ -64,7 +65,7 @@ func Sync() {
 //
 // Example:
 //
-//   Infof("info msg: %s", "some info msg")
+//	Infof("info msg: %s", "some info msg")
 func Infof(msg string, args ...interface{}) {
 	log.Sugar().Infof(msg, args...)
 }
@@ -73,7 +74,7 @@ func Infof(msg string, args ...interface{}) {
 //
 // Example:
 //
-//   Infow("something is error", "err", err.Error(), "msg", "some msg")
+//	Infow("something is error", "err", err.Error(), "msg", "some msg")
 func Infow(msg string, args ...interface{}) {
 	log.Sugar().Infow(msg, args...)
 }
@@ -82,7 +83,7 @@ func Infow(msg string, args ...interface{}) {
 //
 // Example:
 //
-//   Debugf("debug msg: %s", "some debug msg")
+//	Debugf("debug msg: %s", "some debug msg")
 func Debugf(msg string, args ...interface{}) {
 	log.Sugar().Debugf(msg, args...)
 }
@@ -91,7 +92,7 @@ func Debugf(msg string, args ...interface{}) {
 //
 // Example:
 //
-//   Debugw("debug msg: %s", "some debug msg", zap.Error(err))
+//	Debugw("debug msg: %s", "some debug msg", zap.Error(err))
 func Debugw(msg string, args ...interface{}) {
 	log.Sugar().Debugw(msg, args...)
 }
@@ -100,7 +101,7 @@ func Debugw(msg string, args ...interface{}) {
 //
 // Example:
 //
-//   Warnf("something is error", "err", err.Error(), "msg", "some msg")
+//	Warnf("something is error", "err", err.Error(), "msg", "some msg")
 func Warnf(msg string, args ...interface{}) {
 	log.Sugar().Warnf(msg, args...)
 }
@@ -109,7 +110,7 @@ func Warnf(msg string, args ...interface{}) {
 //
 // Example:
 //
-//   Warnw("warn msg: %s", "some warn msg", zap.Error(err))
+//	Warnw("warn msg: %s", "some warn msg", zap.Error(err))
 func Warnw(msg string, args ...interface{}) {
 	log.Sugar().Warnw(msg, args...)
 }
@@ -118,7 +119,7 @@ func Warnw(msg string, args ...interface{}) {
 //
 // Example:
 //
-//   Errorf("error msg: %s", "some error msg")
+//	Errorf("error msg: %s", "some error msg")
 func Errorf(msg string, args ...interface{}) {
 	log.Sugar().Errorf(msg, args...)
 }
@@ -127,7 +128,7 @@ func Errorf(msg string, args ...interface{}) {
 //
 // Example:
 //
-//   Errorw("error msg: %s", "some error msg", zap.Error(err))
+//	Errorw("error msg: %s", "some error msg", zap.Error(err))
 func Errorw(msg string, args ...interface{}) {
 	log.Sugar().Errorw(msg, args...)
 }
@@ -136,7 +137,7 @@ func Errorw(msg string, args ...interface{}) {
 //
 // Example:
 //
-//   Fatalf("fatal msg: %s", "some fatal msg")
+//	Fatalf("fatal msg: %s", "some fatal msg")
 func Fatalf(msg string, args ...interface{}) {
 	log.Sugar().Fatalf(msg, args...)
 }
@@ -145,7 +146,7 @@ func Fatalf(msg string, args ...interface{}) {
 //
 // Example:
 //
-//   Fatalw("fatal msg: %s", "some fatal msg", zap.Error(err))
+//	Fatalw("fatal msg: %s", "some fatal msg", zap.Error(err))
 func Fatalw(msg string, args ...interface{}) {
 	log.Sugar().Fatalw(msg, args...)
 }

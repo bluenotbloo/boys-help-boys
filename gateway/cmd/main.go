@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/alex/boys-help-boys/common/config"
-	"github.com/alex/boys-help-boys/common/logger"
+	"github.com/bluenotbloo/boys-help-boys/common/config"
+	"github.com/bluenotbloo/boys-help-boys/common/logger"
 )
 
 func main() {

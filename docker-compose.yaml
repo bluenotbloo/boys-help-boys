@@ -1,0 +1,30 @@
+name: boys-help-boys
+
+services:
+  nacos:
+    image: nacos/nacos-server:latest   # 使用最新版本的Nacos
+    container_name: nacos
+    environment:
+      - MODE=standalone                  # 单机模式
+      - PREFER_HOST_MODE=hostname        # 避免容器 IP 变化导致注册问题
+      - NACOS_AUTH_ENABLE=false          # 可选：关闭鉴权（默认 false，开发环境方便）
+      # 如果需要开启鉴权，请取消下面注释并设置密钥
+      - NACOS_AUTH_ENABLE=false
+      # 以下三个变量必须同时设置，即使关闭鉴权也需要提供（任意合法值即可）
+      - NACOS_AUTH_TOKEN=VGhpc0lzTXlDdXN0b21TZWNyZXRLZXlGb3JOYWNvc0F1dGhUb2tlbiE=  #Nacos 用于生成JWT Token的密钥，使用长度大于32字符的字符串，再经过Base64编码。
+      - NACOS_AUTH_IDENTITY_KEY=boyshelpboysIdentityKey #Nacos Server端之间 Inner API的身份标识的Key，必填。
+      - NACOS_AUTH_IDENTITY_VALUE=boyshelpboysIdentityValue #Nacos Server端之间 Inner API的身份标识的Value，必填。
+    ports:
+      - "8080:8080"   # Nacos Server端口（默认8080）
+      - "8848:8848"   # 控制台 + HTTP API
+      - "9848:9848"   # gRPC 通信端口（Nacos 2.x 客户端需要）
+      - "9849:9849"   # 服务发现端口（Nacos 2.x 客户端需要）
+    volumes:
+      - nacos_data:/home/nacos/data     # 持久化数据（配置、服务注册信息等）
+    restart: unless-stopped  # 除非-stopped  # 在容器退出时自动重启
+networks:
+  nacos:
+    driver: bridge   # 桥接网络驱动
+volumes:
+  nacos_data:
+    driver: local   # 本地存储驱动

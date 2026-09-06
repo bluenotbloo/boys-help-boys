@@ -3,10 +3,6 @@
 > 一个以微服务架构构建的、带 AI Agent 能力的 Golang 项目。  
 > 项目名纯属恶搞，请勿过度解读。
 
-![Go Version](https://img.shields.io/badge/Go-1.21+-00ADD8?style=flat&logo=go)
-![License](https://img.shields.io/badge/License-MIT-blue.svg)
-![Build Status](https://img.shields.io/github/actions/workflow/status/yourname/boys-help-boys/ci.yml?branch=main)
-
 ## 项目简介
 
 Boys Help Boys 是一个基于微服务架构的后端项目，采用 **Nginx + API Gateway + 业务微服务 + Agent 服务** 的分层设计。当前主要实现用户服务（User Service）和一个对话 Agent，后续可扩展更多业务服务和不同类型的 Agent（如工作流、多智能体等）。
@@ -135,7 +131,7 @@ boys-help-boys/
 1. 克隆仓库
 
 ```bash
-git clone https://github.com/yourname/boys-help-boys.git
+git clone https://github.com/bluenotbloo/boys-help-boys.git
 cd boys-help-boys
 ```
 
