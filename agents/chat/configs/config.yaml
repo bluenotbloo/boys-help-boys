@@ -1,0 +1,16 @@
+nacos:
+  host: 127.0.0.1
+  port: 8848
+chat:
+  host: "127.0.0.1"
+  port: 8083
+  grpc_port: 9100
+logger:
+  level: "info"
+  encoding: "json"
+  filename: "log/chat.log"
+  max-size: 100
+  max-backups: 3
+  max-age: 7
+  compress: true
+  console: true

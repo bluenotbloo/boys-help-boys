@@ -1,0 +1,15 @@
+nacos:
+  host: 127.0.0.1
+  port: 8848
+gateway:
+  host: "127.0.0.1"
+  port: 8081
+logger:
+  level: "info"
+  encoding: "json"
+  filename: "log/gateway.log"
+  max-size: 100
+  max-backups: 3
+  max-age: 7
+  compress: true
+  console: true

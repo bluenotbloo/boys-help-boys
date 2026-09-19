@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/bluenotbloo/boys-help-boys/services/user/internal/router"
+	"github.com/bluenotbloo/boys-help-boys/user/internal/router"
 )
 
 func main() {

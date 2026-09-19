@@ -1,0 +1,16 @@
+nacos:
+  host: 127.0.0.1
+  port: 8848
+user:
+  host: "127.0.0.1"
+  port: 8082
+  grpc_port: 9000
+logger:
+  level: "info"
+  encoding: "json"
+  filename: "log/user.log"
+  max-size: 100
+  max-backups: 3
+  max-age: 7
+  compress: true
+  console: true

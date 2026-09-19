@@ -28,6 +28,7 @@ type loggerConfig struct {
 	Console    bool   `yaml:"console"`
 }
 
+// 从 Nacos 获取配置文件
 func readNacosConfig() (*config, error) {
 	port, err := strconv.ParseUint(getEnv("NACOS_PORT", "8848"), 10, 64) // 解析 NACOS_PORT 环境变量为 uint64
 	if err != nil {
@@ -61,6 +62,7 @@ func readNacosConfig() (*config, error) {
 	return &loaded, nil
 }
 
+// 从本地文件读取配置
 func readLocalConfig() (*config, error) {
 	local := viper.New()
 	local.SetConfigFile(getEnv("LOCAL_CONFIG_FILE", "config.yaml"))
@@ -75,6 +77,7 @@ func readLocalConfig() (*config, error) {
 	return &loaded, nil
 }
 
+// getEnv 获取环境变量，如果不存在则返回默认值
 func getEnv(key, fallback string) string {
 	if value := os.Getenv(key); value != "" {
 		return value
@@ -82,6 +85,7 @@ func getEnv(key, fallback string) string {
 	return fallback
 }
 
+// 获取项目配置
 func GetConfig() *config {
 	return cfg
 }
