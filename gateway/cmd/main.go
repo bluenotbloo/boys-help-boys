@@ -20,27 +20,32 @@ func main() {
 	// 初始化日志器
 	logger.Init()
 	defer logger.Sync()
+	// 启动服务
+	run()
+}
+
+func run() {
+	cfg := config.GetConfig()
+	logger.Infof("config: %+v", cfg)
+	gin := gin.Default()
 
 	// 初始化路由
-	r := gin.Default()
-	router.InitRouter(r)
+	router.InitRouter(gin)
 
-	// 创建 HTTP 服务器
-	cfg := config.GetConfig()
+	// 启动服务，监听 8081 端口
 	addr := cfg.Server.Host + ":" + cfg.Server.Port
 	srv := &http.Server{
 		Addr:    addr,
-		Handler: r,
+		Handler: gin,
 	}
 
-	// 优雅关闭
+	// 优雅启停
 	go func() {
+		logger.Infof("server is starting on %s:%s", cfg.Server.Host, cfg.Server.Port)
 		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-			logger.Fatalf("listen: %s\n", err)
+			logger.Errorf("listen: %s\n", err)
 		}
 	}()
-
-	logger.Infof("server is running on %s", addr)
 
 	// 等待中断信号
 	quit := make(chan os.Signal, 1)

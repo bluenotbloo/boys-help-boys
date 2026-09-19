@@ -2,6 +2,7 @@ package config
 
 import (
 	"fmt"
+
 	"github.com/bluenotbloo/boys-help-boys/common/config"
 	"gopkg.in/yaml.v3"
 )
@@ -9,7 +10,7 @@ import (
 var cfg *Config
 
 type Config struct {
-	Server   ServerConfig   `yaml:"server"`
+	Server   ServerConfig   `yaml:"gateway"`
 	Logger   LoggerConfig   `yaml:"logger"`
 	JWT      JWTConfig      `yaml:"jwt"`
 	Jaeger   JaegerConfig   `yaml:"jaeger"`
