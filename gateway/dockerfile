@@ -1,0 +1,31 @@
+# Gateway Dockerfile
+FROM golang:alpine AS builder
+
+LABEL maintainer="Alex"
+
+ENV GO111MODULE=on
+ENV GOPROXY=https://goproxy.cn,direct
+
+WORKDIR /app
+COPY ./common /app/common
+
+WORKDIR /app
+COPY ./gateway /app/gateway
+
+WORKDIR /app/gateway
+RUN go mod download
+
+RUN go build -o /gateway ./cmd/main.go
+
+FROM alpine AS runner
+
+WORKDIR /app
+
+# 复制编译好的二进制文件和配置文件到运行镜像中
+COPY --from=builder /gateway /gateway
+COPY --from=builder /app/gateway/config /config
+COPY --from=builder /app/gateway/.env /.env
+
+EXPOSE 8081
+
+ENTRYPOINT ["/gateway"]

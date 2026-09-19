@@ -1,8 +1,5 @@
-nacos:
-  host: 127.0.0.1
-  port: 8848
 gateway:
-  host: "127.0.0.1"
+  host: "127.0.0.1"  # 仅本地调试使用， 镜像部署暴露 0.0.0.0:8081
   port: 8081
 logger:
   level: "info"

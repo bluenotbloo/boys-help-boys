@@ -22,8 +22,31 @@ services:
     volumes:
       - nacos_data:/home/nacos/data     # 持久化数据（配置、服务注册信息等）
     restart: unless-stopped  # 除非-stopped  # 在容器退出时自动重启
+    networks:
+      - boys-help-boys-network   # 使用自定义网络，便于服务间通信
+
+
+  gateway:
+    build:
+      context: .   # 构建上下文为当前根目录
+      dockerfile: gateway/dockerfile  # 指定 Dockerfile 文件路径
+    container_name: gateway
+    env_file:
+      - ./gateway/.env
+    environment:
+      - NACOS_ADDR=nacos   # 指向 Nacos 服务的容器名称，替换env中写死的host
+      - NACOS_PORT=8848   
+    ports:
+      - "8081:8081"   # 网关服务端口（默认8081）
+    depends_on:
+      - nacos
+    restart: unless-stopped  # 除非-stopped  # 在容器退出时自动重启
+    networks:
+      - boys-help-boys-network   # 使用自定义网络，便于服务间通信
+
+
 networks:
-  nacos:
+  boys-help-boys-network:
     driver: bridge   # 桥接网络驱动
 volumes:
   nacos_data:

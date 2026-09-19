@@ -4,11 +4,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func InitRouter() {
+func InitRouter(router *gin.Engine) {
 	// 初始化路由
-	router := gin.Default()
-	// 初始化路由
-	router.GET("/", func(c *gin.Context) {
+	router.GET("/hello", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "Hello, World!",
 		})

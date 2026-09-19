@@ -6,7 +6,7 @@
       "request": "launch",
       "mode": "auto",
       "program": "${workspaceFolder}/gateway/cmd",
-      "envFile": "${workspaceFolder}/.env"
+      "envFile": "${workspaceFolder}/gateway/.env"
     }
   ]
 }
