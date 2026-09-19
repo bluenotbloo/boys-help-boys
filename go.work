@@ -1,9 +1,9 @@
 go 1.22
 
 use (
+	./agents/chat
 	./common
 	./gateway
-	./user
-	./agents/chat
 	./proto
+	./user
 )

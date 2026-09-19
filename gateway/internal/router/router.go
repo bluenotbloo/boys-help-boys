@@ -11,4 +11,10 @@ func InitRouter(router *gin.Engine) {
 			"message": "Hello, World!",
 		})
 	})
+	router.GET("/:path", func(c *gin.Context) {
+		path := c.Param("path")
+		c.JSON(200, gin.H{
+			"message": "Hello, " + path + "!",
+		})
+	})
 }

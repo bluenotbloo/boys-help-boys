@@ -25,6 +25,20 @@ services:
     networks:
       - boys-help-boys-network   # 使用自定义网络，便于服务间通信
 
+  postgres:
+    image: postgres:16-alpine   # 使用轻量级的PostgreSQL 15版本
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=root   # 数据库用户名
+      - POSTGRES_PASSWORD=123456   # 数据库密码
+      - POSTGRES_DB=boys-help-boys   # 数据库名
+    ports:
+      - "127.0.0.1:5432:5432"   # PostgreSQL端口（默认5432）
+    volumes:
+      - postgres_data:/var/lib/postgresql/data   # 持久化数据
+    restart: unless-stopped  # 除非-stopped  # 在容器退出时自动重启
+    networks:
+      - boys-help-boys-network   # 使用自定义网络，便于服务间通信
 
   gateway:
     build:
@@ -37,7 +51,7 @@ services:
       - NACOS_ADDR=nacos   # 指向 Nacos 服务的容器名称，替换env中写死的host
       - NACOS_PORT=8848   
     ports:
-      - "8081:8081"   # 网关服务端口（默认8081）
+      - "127.0.0.1:8081:8081"   # 网关服务端口（默认8081）
     depends_on:
       - nacos
     restart: unless-stopped  # 除非-stopped  # 在容器退出时自动重启
@@ -51,3 +65,5 @@ networks:
 volumes:
   nacos_data:
     driver: local   # 本地存储驱动
+  postgres_data:
+    driver: local

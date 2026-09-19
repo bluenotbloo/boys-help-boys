@@ -1,6 +1,7 @@
 gateway:
   host: "127.0.0.1"  # 仅本地调试使用， 镜像部署暴露 0.0.0.0:8081
   port: 8081
+
 logger:
   level: "info"
   encoding: "json"
@@ -10,3 +11,8 @@ logger:
   max-age: 7
   compress: true
   console: true
+
+jwt:
+  secret: "change-me-in-prod"  # HS256 secret, 生产环境建议用 RS256 公钥
+  issuer: "boys-help-boys"
+  expires_in: "24h"

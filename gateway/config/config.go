@@ -9,8 +9,11 @@ import (
 var cfg *Config
 
 type Config struct {
-	Server ServerConfig `yaml:"gateway"`
-	Logger LoggerConfig `yaml:"logger"`
+	Server   ServerConfig   `yaml:"server"`
+	Logger   LoggerConfig   `yaml:"logger"`
+	JWT      JWTConfig      `yaml:"jwt"`
+	Jaeger   JaegerConfig   `yaml:"jaeger"`
+	Upstream UpstreamConfig `yaml:"upstream"`
 }
 
 type ServerConfig struct {
@@ -27,6 +30,23 @@ type LoggerConfig struct {
 	MaxAge     int    `yaml:"max-age"`
 	Compress   bool   `yaml:"compress"`
 	Console    bool   `yaml:"console"`
+}
+
+type JWTConfig struct {
+	Secret    string `yaml:"secret"`
+	Issuer    string `yaml:"issuer"`
+	ExpiresIn string `yaml:"expires_in"`
+}
+
+type JaegerConfig struct {
+	AgentHost    string  `yaml:"agent_host"`
+	AgentPort    int     `yaml:"agent_port"`
+	SamplerParam float64 `yaml:"sampler_param"`
+	ServiceName  string  `yaml:"service_name"`
+}
+
+type UpstreamConfig struct {
+	UserService string `yaml:"user_service"`
 }
 
 func GetConfig() *Config {
