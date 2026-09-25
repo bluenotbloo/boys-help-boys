@@ -1,0 +1,54 @@
+# proto/buf.yaml  buf 编译proto文件生成代码
+
+# buf命令	                                     作用
+# buf generate	                            生成代码（核心）
+# buf lint	                                语法/风格检查
+# buf format -w	                            格式化 .proto 文件
+# buf breaking --against '.git#branch=main'	破坏性变更检测
+# buf dep update	                          升级依赖版本
+# buf build	                                仅编译检查，不生成代码
+
+version: v1                    # 配置版本，固定 v1
+name: buf.build/your-org/your-repo  # 可选：发布到 buf.build 时的仓库名
+
+# ---------- 破坏性变更检测规则 ----------
+breaking:
+  use: [FILE,PACKAGE,WIRE,WIRE_JSON]       # 启用的检测规则集
+    # - FILE                     # 文件级：检测文件增删、包名变更
+    # - PACKAGE                  # 包级：检测服务/消息/字段增删改
+    # - WIRE                     # 线路级：检测 wire 兼容性（字段号、类型）
+    # - WIRE_JSON                # JSON 线路兼容性
+  except:                      # 排除特定规则（可选）
+    # - FIELD_SAME_TYPE          # 忽略字段类型相同但名称变更
+  ignore:                      # 忽略特定文件/字段（可选）
+    # - user/v1/legacy.proto
+  ignore_only:                 # 仅对特定规则忽略
+    FIELD_SAME_DEFAULT:
+      # - user/v1/user.proto
+
+# ---------- 语法/风格检查规则 ----------
+lint:
+  use: [DEFAULT]               # 启用规则集
+    # - DEFAULT                # Google 推荐基础规则（推荐）
+    # - STRICT                 # 更严格（可选）
+    # - BASIC                  # 最基础规则
+  except:                      # 排除特定规则
+    # - PACKAGE_VERSION_SUFFIX   # 允许包名不带版本后缀
+    # - SERVICE_SUFFIX           # 允许服务名不以 Service 结尾
+  ignore:                      # 完全忽略某文件
+    # - user/v1/legacy.proto
+  enum_zero_value_suffix: # "_UNSPECIFIED"  # enum 0 值后缀检查
+
+# ---------- 依赖管理 ----------
+deps:                          # 外部依赖（自动从 buf.build 下载）
+  - buf.build/googleapis/googleapis      # google/api/annotations.proto 等
+  # - buf.build/protocolbuffers/protobuf   # google/protobuf/*.proto
+  # - buf.build/grpc-ecosystem/grpc-gateway # gateway 扩展
+  # - buf.build/your-org/your-other-proto@v1.2.3  # 指定版本
+
+# ---------- 模块内文件排除 ----------
+# exclude_path:                  # 不参与编译/检查的路径
+  # - vendor/
+  # - generated/
+  # - user/v1/internal.proto
+
