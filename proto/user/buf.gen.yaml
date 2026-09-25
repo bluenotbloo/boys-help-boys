@@ -3,11 +3,11 @@
 version: v1
 plugins:
   - plugin: go
-    out: gen
+    out: user/gen   # 生成路径相对于 buf.yaml所在位置定义
     opt: [paths=source_relative]
   - plugin: go-grpc
-    out: gen
+    out: user/gen
     opt: [paths=source_relative, require_unimplemented_servers=true]
   - plugin: grpc-gateway
-    out: gen
+    out: user/gen
     opt: [paths=source_relative, generate_unbound_methods=true]
