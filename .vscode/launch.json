@@ -7,6 +7,14 @@
       "mode": "auto",
       "program": "${workspaceFolder}/gateway/cmd",
       "envFile": "${workspaceFolder}/gateway/.env"
+    },
+    {
+      "name": "user",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}/user/cmd",
+      "envFile": "${workspaceFolder}/user/.env"
     }
   ]
 }

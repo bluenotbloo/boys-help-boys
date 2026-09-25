@@ -4,11 +4,15 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func InitRouter() {
+func InitRouter(router *gin.Engine) {
 	// 初始化路由
-	router := gin.Default()
-	// 初始化路由
-	router.POST("/register", func(c *gin.Context) {
+	router.POST("/user/login", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "Login success",
+		})
+	})
+
+	router.POST("/user/register", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "Register success",
 		})
