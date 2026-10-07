@@ -1,7 +1,7 @@
 syntax = "proto3";
 package user.v1;
 
-option go_package = "github.com/bluenotbloo/boys-help-boys/proto";
+option go_package = "github.com/bluenotbloo/boys-help-boys/proto/user/gen/user/v1";
 
 // 定义service时需引用
 import "google/api/annotations.proto";

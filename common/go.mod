@@ -3,6 +3,7 @@ module github.com/bluenotbloo/boys-help-boys/common
 go 1.22
 
 require (
+	github.com/golang-jwt/jwt/v5 v5.3.1
 	github.com/nacos-group/nacos-sdk-go/v2 v2.3.5
 	go.uber.org/zap v1.28.0
 )

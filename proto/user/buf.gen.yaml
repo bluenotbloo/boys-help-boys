@@ -1,9 +1,10 @@
 # user模块的专属proto生成配置
-# 执行时去buf.yaml所在目录 执行 `buf generate --template user/buf.gen.yaml`                   
+# 执行时去buf.yaml所在目录 执行 `buf generate --template user/buf.gen.yaml` 
+# plugins.out 生成路径相对于 buf.yaml所在位置定义                  
 version: v1
 plugins:
   - plugin: go
-    out: user/gen   # 生成路径相对于 buf.yaml所在位置定义
+    out: user/gen   
     opt: [paths=source_relative]
   - plugin: go-grpc
     out: user/gen

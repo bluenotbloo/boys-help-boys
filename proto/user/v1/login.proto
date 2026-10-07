@@ -7,7 +7,7 @@ package user.v1;
 // go_package 定义包的导入路径  
 // go_package会自动加上 package user.v1中定义的user/v1 
 // 所以路径实际上github.com/bluenotbloo/boys-help-boys/proto+/user/v1
-option go_package = "github.com/bluenotbloo/boys-help-boys/proto";
+option go_package = "github.com/bluenotbloo/boys-help-boys/proto/user/gen/user/v1";
 
 message LoginRequest {
   string username = 1;

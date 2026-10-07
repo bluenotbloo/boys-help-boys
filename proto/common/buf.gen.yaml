@@ -1,0 +1,24 @@
+# common模块的专属proto生成配置
+# 执行时去buf.yaml所在目录 执行 `buf generate --template common/buf.gen.yaml`   
+# plugins.out 生成代码位置：生成路径相对于 buf.yaml所在位置定义     
+# buf generate --template common/buf.gen.yaml --path common/v1
+# --template: buf.gen.yaml 来源
+# --path: proto文件处理范围
+
+# plugins.opt[paths] 控制代码输出路径
+# 如果 -paths: source_relative 就会输出到out指定路径下的common/v1
+# 如果 -path: import 就会使用proto文件中定义的 go_package = "github.com/bluenotbloo/boys-help-boys/proto";
+version: v1
+plugins:
+  - plugin: go
+    out: common/gen 
+    opt: [paths=source_relative]
+
+  - plugin: go-grpc
+    out: common/gen
+    opt: [paths=source_relative, require_unimplemented_servers=true]
+
+  - plugin: grpc-gateway
+    out: common/gen
+    opt: [paths=source_relative, generate_unbound_methods=true]
+       

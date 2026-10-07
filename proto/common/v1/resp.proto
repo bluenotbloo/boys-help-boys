@@ -1,0 +1,17 @@
+syntax = "proto3";   // 指定 proto3 语法
+
+// package 定义包名
+package common.v1;
+
+// go_package 定义包的导入路径  
+// go_package会自动加上 package common.v1中定义的common/v1 
+// 所以路径实际上github.com/bluenotbloo/boys-help-boys/proto+/common/v1
+option go_package = "github.com/bluenotbloo/boys-help-boys/proto/common/gen/common/v1";
+
+import "google/protobuf/any.proto";
+
+message Response {
+  int64 Code = 1;
+  string Message = 2;
+  google.protobuf.Any MessageName =3;   // 使用any类型嵌入其他业务模块的response
+}
