@@ -16,3 +16,6 @@ jwt:
   secret: "boys-help-boys"  # HS256 secret, 生产环境建议用 RS256 公钥
   issuer: "boys-help-boys"
   expires_in: "24h"
+
+upstream:
+  user_service: "127.0.0.1:8082"  # user 服务的 grpc-gateway HTTP 地址，后续可改为 Nacos 动态发现

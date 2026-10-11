@@ -6,7 +6,8 @@
       "request": "launch",
       "mode": "auto",
       "program": "${workspaceFolder}/gateway/cmd",
-      "envFile": "${workspaceFolder}/gateway/.env"
+      "envFile": "${workspaceFolder}/gateway/.env",
+      "cwd": "${workspaceFolder}/gateway"
     },
     {
       "name": "user",
@@ -14,7 +15,8 @@
       "request": "launch",
       "mode": "auto",
       "program": "${workspaceFolder}/user/cmd",
-      "envFile": "${workspaceFolder}/user/.env"
+      "envFile": "${workspaceFolder}/user/.env",
+      "cwd": "${workspaceFolder}/user"
     }
   ]
 }

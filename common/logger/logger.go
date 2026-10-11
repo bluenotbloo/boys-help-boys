@@ -42,7 +42,6 @@ func Init() {
 		zap.ReplaceGlobals(log) // 替换全局 logger
 		Infof("logger initialize success")
 	})
-	return
 }
 
 // SetLevel 动态修改日志级别（例如通过配置中心回调）

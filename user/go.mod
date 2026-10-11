@@ -5,6 +5,7 @@ go 1.26.0
 require (
 	github.com/bluenotbloo/boys-help-boys/common v0.0.0-00010101000000-000000000000
 	github.com/bluenotbloo/boys-help-boys/proto v0.0.0-00010101000000-000000000000
+	github.com/grpc-ecosystem/grpc-gateway/v2 v2.30.0
 	google.golang.org/grpc v1.84.0
 	gopkg.in/yaml.v3 v3.0.1
 )
@@ -38,7 +39,6 @@ require (
 	github.com/deckarep/golang-set v1.7.1 // indirect
 	github.com/golang/mock v1.6.0 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
-	github.com/grpc-ecosystem/grpc-gateway/v2 v2.30.0 // indirect
 	github.com/jmespath/go-jmespath v0.0.0-20180206201540-c2b33e8439af // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/matttproud/golang_protobuf_extensions v1.0.1 // indirect
